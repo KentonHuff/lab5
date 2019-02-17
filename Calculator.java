@@ -138,7 +138,7 @@ public class Calculator
      * "+", "-", "/"). For the 3 tokens case, the command token is the second token (e.g. "1 + 3", + is the command).
      * For the 2 tokens case, the command token is the first token (e.g. "halve 2", halve is the command.
      */
-    protected static int execute(String[] tokens) throws NumberFormatException, CalculatorException
+    protected static int execute(String[] tokens) throws /*PAY ATTENTION TO THIS*/ArithmeticException, NumberFormatException, CalculatorException
     {
         // Condition on the number of tokens (number of strings in user input separated by spaces)
         switch(tokens.length)
@@ -190,5 +190,31 @@ public class Calculator
         // TODO: complete this...
         // Hint: you should try and call execute(). If execute encounters an error, it will throw an exception. This
         // method will catch those exceptions and respond accordingly.
+    	String[] tokens = input.split(" ");
+    	
+    	try
+    	{
+    		int result = execute(tokens);
+    		
+    		if(result == Integer.MIN_VALUE)
+    		{
+    			return "quit";
+    		}
+    		
+    		return String.format("The result is: %d", result);
+    	}
+    	catch(ArithmeticException e)
+    	{
+    		return "Attempted to divide by 0. Please try again.";
+    	}
+    	catch(NumberFormatException e)
+    	{
+    		return "Input number cannot be parsed to an int. Please try again.";
+    	}
+    	catch(CalculatorException e)
+    	{
+    		return String.format("Calculator Exception, message is: %s", e.getMessage());
+    	}
+    	
     }
 }

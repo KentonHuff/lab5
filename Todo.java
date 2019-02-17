@@ -5,14 +5,23 @@ OU ID_______________: XXXXXXXXX
 OU EMAIL____________: XXX@ou.edu
 
 Tasks:
-1. XXX
-2. XXX
+1. Implement calculateTwoTokens
+2. Implement calculateThreeTokens
+3. Implement execute
+4. Implement parseAndExecute
+5. Implement tests for Calculator class
 
 Estimated Time (minutes):
-1. XXX
-2. XXx
+1. 10
+2. 10
+3. 7
+4. 12
+5. 15
 
 Actual Time (minutes):
-1. XXX
-2. XXX
+1. 12
+2. 15
+3. 7
+4. 15
+5. 20
 */}

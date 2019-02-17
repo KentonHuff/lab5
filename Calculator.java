@@ -35,7 +35,22 @@ public class Calculator
     protected static int calculateTwoTokens(String[] tokens) throws NumberFormatException, CalculatorException
     {
         int a = Integer.parseInt(tokens[1]); // Throws NumberFormatException if the second token is not an int value.
-        // TODO: complete this...
+        String operation = tokens[0];
+        if(!(operation.equals("negate") || operation.equals("halve")))
+        {
+        	throw new CalculatorException("Illegal Command");
+        }
+        
+        if(operation.equals("negate"))
+        {
+        	return -1 * a;
+        }
+        
+        //If it equals "halve"
+        else
+        {
+        	return a/2;
+        }
     }
 
     /**
@@ -69,7 +84,30 @@ public class Calculator
     protected static int calculateThreeTokens(String[] tokens)
             throws ArithmeticException, NumberFormatException, CalculatorException
     {
-        // TODO: complete this...
+        int a = Integer.parseInt(tokens[0]);
+        int b = Integer.parseInt(tokens[2]);
+        
+        String operation = tokens[1];
+        if(!(operation.equals("+") || operation.equals("-") || operation.equals("/")))
+        {
+        	throw new CalculatorException("Illegal Command");
+        }
+        
+        if(operation.equals("+"))
+        {
+        	return a + b;
+        }
+        
+        else if(operation.equals("-"))
+        {
+        	return a - b;
+        }
+        
+        //If operation.equals("/")
+        else
+        {
+        	return a / b;
+        }
     }
 
     /**
@@ -105,7 +143,20 @@ public class Calculator
         // Condition on the number of tokens (number of strings in user input separated by spaces)
         switch(tokens.length)
         {
-            // TODO: complete this...
+        case 0: throw new CalculatorException("Illegal Token Length");
+        	//break;
+        case 1: 
+        	if(tokens[0].equals("quit"))
+        		return Integer.MIN_VALUE;
+        	else
+        		throw new CalculatorException("Illegal Command");
+        	//break;
+        case 2: return calculateTwoTokens(tokens);
+        	//break;
+        case 3: return calculateThreeTokens(tokens);
+        	//break;
+        default: throw new CalculatorException("Illegal Token Length");
+        	//break;
         }
 
     }
